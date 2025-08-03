@@ -11,18 +11,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "sales")
-@Getter 
-@Setter 
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Sale {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private LocalDateTime saleDate;
 
-    private BigDecimal totalAmount;
+    private double totalAmount;
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL)
-    private List<SaleItem> items = new ArrayList<>();
+    private List<SaleItem> items;
 }

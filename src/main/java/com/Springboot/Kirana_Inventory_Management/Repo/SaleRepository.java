@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.Springboot.Kirana_Inventory_Management.Entity.Sale;
 
 @Repository
-public interface SaleRepository extends JpaRepository<Sale, Long> {
+public interface SaleRepository extends JpaRepository<Sale, Integer> {
 }

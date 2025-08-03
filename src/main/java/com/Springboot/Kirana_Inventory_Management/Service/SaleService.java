@@ -1,9 +1,12 @@
 package com.Springboot.Kirana_Inventory_Management.Service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class SaleService {
+import com.Springboot.Kirana_Inventory_Management.DTO.SaleRequestDTO;
+import com.Springboot.Kirana_Inventory_Management.DTO.SaleResponseDTO;
 
-  
+public interface SaleService {
+    SaleResponseDTO createSale(SaleRequestDTO saleRequestDTO);
+    SaleResponseDTO getSaleById(int id);
+    List<SaleResponseDTO> getAllSales();
 }
