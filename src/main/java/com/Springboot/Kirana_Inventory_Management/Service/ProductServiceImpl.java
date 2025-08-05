@@ -11,8 +11,11 @@ import com.Springboot.Kirana_Inventory_Management.Entity.Product;
 import com.Springboot.Kirana_Inventory_Management.Mapper.ProductMapper;
 import com.Springboot.Kirana_Inventory_Management.Repo.ProductRepo;
 
+import jakarta.transaction.Transactional;
+
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
 	
@@ -42,16 +45,14 @@ public class ProductServiceImpl implements ProductService {
 
 	    @Override
 	    public ProductDTO updateProduct(int id, ProductDTO productDTO) {
-	        Product product = productRepository.findById(id)
-	                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
-	        
-	        product.setName(productDTO.getName());
-	        product.setDescription(productDTO.getDescription());
-	        product.setCategory(productDTO.getCategory());
-	        product.setUnitPrice(productDTO.getUnitPrice());
-	        product.setExpiryDate(productDTO.getExpiryDate());
-	        product.setStock(productDTO.getStock());
+	    	Product existingProduct = productRepository.findById(id)
+	    	        .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
 
+	        if (!productRepository.existsById(id)) {
+	            throw new RuntimeException("Product not found with id: " + id);
+	        }
+	        Product product = ProductMapper.toEntity(productDTO);
+	        product.setId(id); // make sure ID is preserved
 	        return ProductMapper.toDTO(productRepository.save(product));
 	    }
 

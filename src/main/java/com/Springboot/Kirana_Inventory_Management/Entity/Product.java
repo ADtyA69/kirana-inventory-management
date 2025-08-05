@@ -4,7 +4,6 @@ import java.util.Date;
 
 import com.Springboot.Kirana_Inventory_Management.Enum.Category;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -54,6 +54,10 @@ public class Product {
 	
 	public int stock;
 	
+	
+	@Version
+	@Column(name = "version")
+	private int version;
 	
 	
 	
