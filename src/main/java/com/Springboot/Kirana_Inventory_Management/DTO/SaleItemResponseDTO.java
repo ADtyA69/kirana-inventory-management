@@ -1,7 +1,5 @@
 package com.Springboot.Kirana_Inventory_Management.DTO;
 
-import java.math.BigDecimal;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
